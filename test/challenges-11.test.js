@@ -7,7 +7,7 @@ var students = [{
     },
     {
         firstName: 'Ben',
-        lastName: 'Zeller',
+        lastNAme: 'Zeller',
         gradsList: [20, 10, 11, 11, 2, 5, 3, 2]
     },
     {
@@ -17,7 +17,7 @@ var students = [{
     },
     {
         firstName: 'Fred',
-        lastName: 'Sagar',
+        lastNAme: 'Sagar',
         gradsList: [20, 10, 18, 11, 2, 20, 3, 10]
     }
 ]

@@ -118,25 +118,54 @@ function fullName(arr) {
 //]
 // -------------
 
-function Object (firstName,lastName,gradsList,avg) {
-    this.firstName = firstName
-    this.lastName = lastName
-    this.gradsList = gradsList
-    this.avg = avg
+
+//old selution:
+// function Object (firstName,lastName,gradsList,avg) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.gradsList = gradsList;
+//     this.avg = avg;
+// }
+// function gradesAvg(arr) {
+
+//     let newArr=[] , sum =0 , avg =0
+//     for (let i=0 ; i<arr.length; i++){
+//         for (let j=0; j<arr[i].gradsList.length ; j++){
+//             sum = sum + arr[i].gradsList[j]
+//         }
+//         avg = sum / arr[i].gradsList.length
+//         newArr[i]=new Object (arr[i].firstName, arr[i].lastName, arr[i].gradsList, avg)
+//         sum =0
+//     }
+//     return newArr
+// }
+
+function lastN (name){
+    if (name.lastName != null){
+        return name.lastName
+    }
+    if (name.lastNAme != null){
+        return name.lastNAme
+    } else return null
 }
 
-function gradesAvg(arr) {
 
-    let newArr=[] , sum =0 , avg =0
-    for (let i=0 ; i<arr.length; i++){
-        for (let j=0; j<arr[i].gradsList.length ; j++){
-            sum = sum + arr[i].gradsList[j]
-        }
-        avg = sum / arr[i].gradsList.length
-        newArr[i]=new Object (arr[i].firstName, arr[i].lastName, arr[i].gradsList, avg)
-        sum =0
+function gradesAvg(arr) {
+    let  sum =0 , avg =0;
+    let newArr = arr.map(obj => {
+        sum = 0;
+       obj.gradsList.forEach(element => {
+           sum += element;
+       });
+       return { 
+        firstName: obj.firstName,
+        lastName: lastN(obj),
+		gradsList: obj.gradsList,
+		avg: sum/ obj.gradsList.length
     }
-    return newArr
+    });
+
+    return newArr;
 }
 
 
@@ -207,30 +236,56 @@ function gradesAvg(arr) {
 //]
 // -------------
 
-function Object (firstName,lastName,gradsList,avg,result ) {
-    this.firstName = firstName
-    this.lastName = lastName
-    this.gradsList = gradsList
-    this.avg = avg
-    this.result = result
-}
+
+
+
+//old solution:
+// function Object (firstName,lastName,gradsList,avg,result ) {
+//     this.firstName = firstName
+//     this.lastName = lastName
+//     this.gradsList = gradsList
+//     this.avg = avg
+//     this.result = result
+// }
+
+// function studentsResult(arr) {
+//     let newArr=[] , sum =0 , avg =0
+//     for (let i=0 ; i<arr.length; i++){
+//         for (let j=0; j<arr[i].gradsList.length ; j++){
+//             sum = sum + arr[i].gradsList[j]
+//         }
+//         avg = sum / arr[i].gradsList.length
+//         let result
+//         if (avg<50){ 
+//              result = 'Failed'
+//         } else {result = 'Passed'}
+//         newArr[i]=new Object (arr[i].firstName, arr[i].lastName, arr[i].gradsList, avg, result)
+//         sum =0
+//     }
+//     return newArr
+
+// }
 
 function studentsResult(arr) {
-    let newArr=[] , sum =0 , avg =0
-    for (let i=0 ; i<arr.length; i++){
-        for (let j=0; j<arr[i].gradsList.length ; j++){
-            sum = sum + arr[i].gradsList[j]
-        }
-        avg = sum / arr[i].gradsList.length
-        let result
-        if (avg<50){ 
-             result = 'Failed'
-        } else {result = 'Passed'}
-        newArr[i]=new Object (arr[i].firstName, arr[i].lastName, arr[i].gradsList, avg, result)
-        sum =0
+    let  sum =0 , avg =0 ; 
+    let newArr = arr.map(obj => {
+        sum = 0;
+       obj.gradsList.forEach(element => {
+           sum += element;
+           
+       },
+       );
+       return { 
+        firstName: obj.firstName,
+        lastName:  lastN(obj),  //you can find the function in line 143
+		gradsList: obj.gradsList,
+		avg: sum/ obj.gradsList.length,
+        result: (sum/ obj.gradsList.length)<50? 'Failed' : 'Passed'
     }
-    return newArr
-
+    });
+    console.log(newArr)
+    return newArr;
+    
 }
 
 
