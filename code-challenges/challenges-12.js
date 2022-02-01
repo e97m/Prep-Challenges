@@ -99,8 +99,15 @@ return finallArr
 // 
 // ------------------------
 
+function checkVowel(word){
+    let vowel = (/\w+[aeiou]\w+|[aeiou]\w+|\w+[aeiou]/gi).test(word)
+    let newVowel = !vowel
+    return newVowel
+}
+
 const vowelsFiltration = (arr) => {
-    // write your code here
+    const filtered = arr.filter(checkVowel)  
+    return filtered 
 } 
 
 // 4) ---------------------
@@ -118,7 +125,9 @@ const vowelsFiltration = (arr) => {
 // ------------------------
 
 const skillComparison = (arr1, arr2) => {
-    // write your code here
+    let differences = arr1.filter(skill => !arr2.includes(skill)) +','+ arr2.filter(skill => !arr1.includes(skill))
+    let diffArr = differences.split(',')
+    return diffArr
 }
 
 
