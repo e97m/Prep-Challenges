@@ -1,0 +1,67 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "## Hacker Rank\n\nFor Thursdays you will be solving some selected challenges on HackerRank, please create an account if you don't have then\nFollow the links below:\nread them carefully and solve them then copy-paste your solution below in Code Block"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### **Required**:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#####  [Equality In An Array](https://www.hackerrank.com/challenges/equality-in-a-array/problem?isFullScreen=true)\n\nSolution:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function equalizeArray(arr) {\n    // Write your code here\n    let maxCount =0, maxRepeatedNum\n    for (let i=0; i<arr.length ; i++){\n        let counter = 0\n        for (let j=0 ; j<arr.length ; j++){\n            if (arr[i] == arr[j]){\n                counter++\n            }\n        }\n        if (counter>maxCount) {\n            maxCount = counter\n            maxRepeatedNum = arr[i]\n        }\n    }\n    let minNumsToDelete = arr.length - maxCount\n    return minNumsToDelete\n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### **Optional**:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#####  [Halloween Sale](https://www.hackerrank.com/challenges/halloween-sale/problem?isFullScreen=true)\n\nSolution:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#####  [Sherlock And Squares](https://www.hackerrank.com/challenges/sherlock-and-squares/problem?isFullScreen=true)\n\nSolution:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "//solution 1 time limit exceeded\nfunction squares(a, b) {\n    // Write your code here\n    let count = 0\n    for (let i=0 ; i<= b-a ; i++) {\n        if (Number.isInteger(Math.sqrt(a+i))) count++\n    }\n    return count\n}\n\n//solution 2 time limit exceeded\nfunction squares(a, b) {\n    // Write your code here\n    let count = 0\n    for (let i=0 ; i<= b-a ; i++) {\n        let intSqr = Math.floor(Math.sqrt(a+i))\n        if (intSqr*intSqr == a+i) count++\n    }\n    return count\n}\n\n//solution 3 time limit exceeded\nfunction squares(a, b) {\n    // Write your code here\n    let count = 0\n    for (let i=0 ; i<= b-a ; i++) {\n        if (Math.sqrt(a+i) % 1 ===0) count++  \n    }\n    return count\n}"
+            ],
+            "outputs": []
+        }
+    ]
+}
