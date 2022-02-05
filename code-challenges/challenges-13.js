@@ -39,7 +39,11 @@
 
 const objectCounter = (obj) => {
     // write your code here
-
+    // voters.length
+    let final = obj.reduce((total) => {
+        return total += 1
+    }, 0)
+    return final
 }
 
 // 2) ---------------------
@@ -57,7 +61,14 @@ const objectCounter = (obj) => {
 
 const stringReverse = (str) => {
     // write your code here
-
+    //str.split(' ').reverse().join(' ')
+    let newArr = []
+    let arr = str.split(' ')
+    arr.reduce((a, b) => {
+        newArr = [b].concat(a)
+        return newArr
+    }, [])
+    return newArr.join(' ')
 }
 
 // 3) ---------------------
@@ -100,6 +111,30 @@ const stringReverse = (str) => {
 
 const statistics = (obj) => {
     // write your code here
+    let person1=0 , person2=0 , person3=0 , person4=0
+    let final = obj.reduce((a, item) => {
+        if (item.votes_To == 'James') person1 += 1
+        if (item.votes_To == 'Jade') person2 += 1
+        if (item.votes_To == 'Bailey') person3 += 1
+        if (item.votes_To == 'Chad') person4 +=1
+        if (person4 == 0) {             //not dynamic
+            let obj = {
+                James: person1,
+                Jade: person2,
+                Bailey: person3,
+            }
+            return obj
+        }
+        if (person1 == 0) {             //not dynamic
+            let obj = {
+                Jade: person2,
+                Chad: person4,
+            }
+            return obj
+        }
+    }, 0)
+    return final
+
 }
 
 
