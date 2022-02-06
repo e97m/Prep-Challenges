@@ -80,26 +80,23 @@ const replaceWords = (str) => {
 //
 // ------------------------
 
-// const arrToStr = (arr) => {
-//     if (arr.length <= 5) { return arr.join(' ') }
-//     if (arr.length > 5) {
-//       console.log(arr)
-//         let newArr = arr.splice(4, 0, ',')
-//         return newArr.join(' ')
-//     } else return 'more than 10 words'
-// }
-
-
-
 const arrToStr = (arr) => {
-//       if (arr.length > 5){
-//   for (let i =1 ; i<arr.length/5 ; i++){
-//       let newArr = arr.splice((6*i-1), 0, ',')
-//       var str = newArr.join(' ') 
-//   }return str
-//   }else return arr.join(' ')
-  }
-
+    if (arr.length < 5) { return arr.join(' ') }
+    else {
+        let newArr = [], chunk = 5, str, finalArr = [];
+        for (let i = 0, j = arr.length; i < j; i += chunk) {
+            newArr = arr.slice(i, i + chunk);
+            if (j - i >= chunk) {
+                str = newArr.join(' ') + ','
+                finalArr.push(str)
+            } else {
+                str = newArr.join(' ')
+                finalArr.push(str)
+            }
+        }
+        return finalArr.join(' ')
+    }
+}
 
 
 
@@ -119,15 +116,28 @@ const arrToStr = (arr) => {
 
 
 const letterCounter = (str) => {
-    // let v3 = /(.)\1{3}/g , v2 = /(.)\1{2}/g , v1 = /(.)\1{1}/g ;
-    // if (v3.test(str)) {
-    //     str.replace(v2 , 3)
-    // } else if (v2.test(str)){
-    //     str.replace(v1 , 2)
-    // }else if (v1.test(str)){
-    //     str.replace(/(.)\1{0}/g , 1)
-    // }
-    // return str
+    // old solution idia(Regex): let v3 = /(.)\1{3}/g , v2 = /(.)\1{2}/g , v1 = /(.)\1{1}/g ;
+    let newStr = ''
+    for (let i = 0; i < str.length; i++) {
+        let counter = 0
+        let new_i
+        for (let j = i; str[i] == str[j]; j++) {
+            counter++
+            new_i = j
+        }
+        if (str[new_i + 1] == ' ') {
+            newStr = newStr + str[i] + counter + ' '
+            i = new_i + 1
+        }
+        else {
+            newStr = newStr + str[i] + counter
+            i = new_i
+        }
+    }
+    return newStr
+
+
+
 }
 
 
