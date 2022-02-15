@@ -16,6 +16,21 @@
 
 const recursionPattern = (int1, int2) => {
     // write your code here
+    let arr = [] , newArr = [] , result = []
+
+    if (int1 < int2) {
+        arr.push(-4)
+        arr.push(int1)
+        arr.unshift(int1)
+        return arr
+    }
+    else {
+        newArr = recursionPattern(int1-int2 , int2)
+        result = newArr.flat(Infinity)
+        result.push(int1)
+        result.unshift(int1)
+        return result
+    }
 }
 // -------------------------------------------------------------------------------------------------------
 
@@ -35,6 +50,11 @@ const recursionPattern = (int1, int2) => {
 
 const filterLinks = (str) => {
     // write your code here
+    let afterSlashes=[] , url = []
+
+    afterSlashes = str.split('//')
+    url = afterSlashes[1].split('"')
+    return url[0]
 }
 // -------------------------------------------------------------------------------------------------------
 
@@ -54,6 +74,13 @@ const filterLinks = (str) => {
 
 const isPalindrome = (str) => {
     // write your code here
+    let noSambols , lowred , reversed
+
+    noSambols = str.replace(/[^a-z]/gi, "")
+    lowred = noSambols.toLowerCase()
+    reversed = lowred.split("").reverse().join("")
+  
+    return (reversed == lowred ? true : false)
 }
 // -------------------------------------------------------------------------------------------------------
 
