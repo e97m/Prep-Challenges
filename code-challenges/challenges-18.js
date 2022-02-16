@@ -16,6 +16,16 @@
 
 const wordLength = (str) => {
     // write your code here
+    let mid, myInt
+    let arr = str.split(' ')
+    let num = arr.length
+    if (num % 2 == 0) {
+        mid = arr[(arr.length / 2)]
+    } else {
+        myInt = Math.floor((arr.length) / 2)
+        mid = arr[myInt]
+    }
+    return mid.length
 }
 // -------------------------------------------------------------------------------------------------------
 
@@ -41,6 +51,16 @@ const wordLength = (str) => {
 
 const wordLetters = (str1, str2) => {
     // write your code here
+    let arr1 = [], arr2 = [], noSambols1 = [], noSambols2 = []
+    noSambols1 = str1.replace(/[^a-z]/gi, "")
+    noSambols2 = str2.replace(/[^a-z]/gi, "")
+    arr1 = noSambols1.split('').sort()
+    arr2 = noSambols2.split('').sort()
+    let newStr1 = arr1.join('')
+    let newStr2 = arr2.join('')
+    console.log(newStr1)
+    console.log(newStr2)
+    return (newStr1 === newStr2)
 }
 // -------------------------------------------------------------------------------------------------------
 
